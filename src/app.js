@@ -49,7 +49,7 @@ app.get('/weather', (req, res) => {
             error : "you must provide an address"
         })
     } else {
-        foreCast(`${req.query.address}`, (error,{location, temperature, precip} = {}) => {
+        foreCast(`${req.query.address}`, (error,{location, temperature, precip, localtime, icons, description} = {}) => {
             if(error) {
                 return res.send({
                     error
@@ -59,7 +59,10 @@ app.get('/weather', (req, res) => {
                 location,
                 forecast : temperature,
                 address : req.query.address,
-                precip
+                precip,
+                localtime,
+                icons,
+                description
             });
         });
 

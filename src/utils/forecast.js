@@ -10,9 +10,12 @@ const foreCast = (address, callback) => {
             callback('Unable to find location. Try another search!', undefined);
         } else {
             callback(undefined, {
-                location : body.location.name,
+                location : body.request.query,
                 precip : body.current.precip,
-                temperature : body.current.temperature
+                temperature : body.current.temperature,
+                localtime : body.location.localtime,
+                icons : body.current.weather_icons,
+                description : body.current.weather_descriptions
             });
         }
     });
